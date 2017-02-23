@@ -3,12 +3,16 @@ $(document).ready(function(){
 	$('#lastname').keyup(validaLastname);
 	$('#input-password').keyup(validatePassword);
 });
+$(document).click(function(){
+	$("#opciones").click(validateOpcion);
+});
 function validateForm()
 {
 	validateName();
 	validaLastname();
 	validateEmail();
 	validatePassword();
+	validateOpcion();
 }
 function createSpan(conteiner, message)
 {
@@ -59,6 +63,16 @@ function validatePassword(){
 		createSpan(contenidoPasswod, "contraseña no valida");
 	}else{
 		$("#containerPassword span").remove();
+	}
+}
+function validateOpcion(){
+	var containerOpcion = $('#containerOpcion');
+	var opcion = $('#opciones').val();
+	if(opcion == null || opcion == 0 ){
+		createSpan(containerOpcion, "Tiene que seleccionar una opciòn");
+		return false;
+	}else{
+		$('#containerOpcion span').remove();
 	}
 }
 
